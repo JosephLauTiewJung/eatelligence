@@ -9,6 +9,7 @@ const SurpriseCard = ({data}) => {
     const onSpin = () => {
         setIsSpinning(true);
         setTimeout(() => {
+            console.log(data)
             setMockData(data[Math.floor(Math.random() * data.length)]);
             setIsSpinning(false);
         }, 2000) // Simulate a 2-second spin duration, needs to be replaced with actual logic
@@ -31,7 +32,7 @@ const SurpriseCard = ({data}) => {
                 <h2 className="text-3xl font-extrabold text-white tracking-tight">
                     {mockData.name}
                 </h2>
-
+                <div className='text-white'>Price: ${mockData.price}</div>
                 {/* Tags Row */}
                 <div className="flex flex-wrap gap-2">
                     {Array.isArray(mockData.tags) && mockData.tags.map((tag, idx) => (

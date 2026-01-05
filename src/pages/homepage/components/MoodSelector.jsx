@@ -18,7 +18,7 @@ export const MoodSelector= ({ selectedMood, onSelectMood }) => {
     return (
         <div className="mb-8">
             <h2 className="text-white text-xl font-bold mb-4">How are you feeling?</h2>
-            <div className="flex space-x-3 overflow-x-auto no-scrollbar pb-2">
+            <div className="flex space-x-3 pb-2 overflow-scroll" style={{scrollbarWidth:'none'}}>
                 {MOODS.map((mood) => (
                     <button
                         key={mood.id}

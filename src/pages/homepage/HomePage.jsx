@@ -24,10 +24,10 @@ const HomePage = () => {
         <div className='bg-black min-h-screen'>
             <div className='w-[80%] m-auto'>
                 <Header/>
-                <BottomNavigationBar/>
                 <MoodSelector/>
                 <SurpriseCard onSurprise={onSurprise} isLoading={isLoading}/>
                 {/*<RecommendBar recommendation={foods[0]}/>*/}
+                <BottomNavigationBar/>
             </div>
         </div>
     )

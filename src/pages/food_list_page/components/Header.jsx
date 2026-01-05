@@ -1,14 +1,25 @@
-
 import React from 'react';
-import { ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles, ChevronUp } from 'lucide-react';
+import toast from "react-hot-toast";
 
-const Header = ({ activeTab, onTabChange }) => {
+const Header = ({ activeTab, onTabChange, onShoppingListActive, addedItem}) => {
+    const [isShoppingListOpen, setIsShoppingListOpen] = React.useState(false);
+    const onClickHandler = () => {
+        console.log(addedItem)
+        if (addedItem.length === 0) {
+            toast("Shopping list is empty" );
+            return
+        }
+        setIsShoppingListOpen(!isShoppingListOpen);
+        onTabChange('shopping-list')
+        onShoppingListActive(!isShoppingListOpen);
+    }
     return (
         <div className="w-full space-y-6">
             {/* Top Navigation Row */}
             <div className="flex items-center space-x-4">
                 <button
-                    onClick={() => onTabChange('shopping-list')}
+                    onClick={onClickHandler}
                     className={`flex items-center justify-between px-6 py-3 rounded-full border-2 transition-all ${
                         activeTab === 'shopping-list'
                             ? 'bg-gray-200 text-black border-transparent'
@@ -16,7 +27,7 @@ const Header = ({ activeTab, onTabChange }) => {
                     }`}
                 >
                     <span className="font-bold mr-2">Shopping List</span>
-                    <ChevronDown size={20} />
+                    {addedItem.length != 0   && isShoppingListOpen ? <ChevronUp /> : <ChevronDown />}
                 </button>
 
                 <button
@@ -30,12 +41,6 @@ const Header = ({ activeTab, onTabChange }) => {
                     <span className="font-bold">Food List</span>
                 </button>
             </div>
-
-            {/* AI Recommendations Button */}
-            <button className="w-full bg-[#f39c38] hover:bg-[#e68a2e] transition-colors py-4 rounded-full flex items-center justify-center space-x-3 shadow-lg">
-                <Sparkles className="text-cyan-300 fill-cyan-300" size={24} />
-                <span className="text-white font-bold text-lg tracking-wide uppercase">AI Recommendations</span>
-            </button>
         </div>
     );
 };

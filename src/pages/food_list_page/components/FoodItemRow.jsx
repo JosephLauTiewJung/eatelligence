@@ -1,8 +1,7 @@
-
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Plus } from 'lucide-react';
 
-const FoodItemRow = ({ item }) => {
+const FoodItemRow = ({ item, onAddedItem }) => {
     return (
         <div className="flex items-center justify-between py-4 border-b border-gray-800 last:border-0">
             <div className="flex items-center space-x-4">
@@ -11,7 +10,7 @@ const FoodItemRow = ({ item }) => {
                     <img
                         src={item.imageUrl}
                         alt={item.name}
-                        className="w-full h-full object-cover grayscale opacity-80"
+                        className="w-full h-full object-cover"
                     />
                 </div>
 
@@ -25,7 +24,7 @@ const FoodItemRow = ({ item }) => {
             </div>
 
             <div className="flex flex-col items-end">
-                <button className="text-white hover:text-gray-300 transition-colors p-1">
+                <button className="text-white hover:text-gray-300 transition-colors p-1" onClick={onAddedItem}>
                     <Plus size={32} strokeWidth={2.5} />
                 </button>
                 <span className="text-gray-400 text-sm mt-1">{item.vendor}</span>
