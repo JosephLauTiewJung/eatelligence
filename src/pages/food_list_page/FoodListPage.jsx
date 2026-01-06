@@ -73,9 +73,7 @@ const FoodListPage = () => {
         const API_ENDPOINT = "user/chat?message="
         const ingredients = JSON.stringify(sessionStorage.getItem("shoppingList"))
         const prompt2 = `Based on the following ingredients: ${ingredients}, suggest other foods that I need to 
-        fulfill my nutritional needs. Answer STRICTLY in JSON format as the following example: 
-        [
-        ]. Don't include any explanation or additional text outside the JSON format.`;
+        fulfill my nutritional needs`;
         const username = sessionStorage.getItem("username")
         try {
             const response = await axios.get(`${BASE_URL}${API_ENDPOINT}${encodeURIComponent(prompt2)}`,
