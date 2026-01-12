@@ -1,58 +1,71 @@
-import Tag from "../../../components/Tag.jsx";
-import Button from "./Button.jsx";
-import {useState} from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const SurpriseCard = ({data}) => {
+const SurpriseCard = ({ data }) => {
+    const navigate = useNavigate();
     const [isSpinning, setIsSpinning] = useState(false);
     const [mockData, setMockData] = useState(data[0]);
+
     const onSpin = () => {
         setIsSpinning(true);
         setTimeout(() => {
-            console.log(data)
             setMockData(data[Math.floor(Math.random() * data.length)]);
             setIsSpinning(false);
-        }, 2000) // Simulate a 2-second spin duration, needs to be replaced with actual logic
-
+        }, 1500);
     }
+
+    const handleGo = () => {
+        toast.success('Opening navigation...', { icon: '🗺️' });
+        navigate('/navigate', { state: { spot: mockData } });
+    };
+
     return (
-        <div className={`w-full max-w-md bg-[#111111] rounded-[40px] p-6 border border-zinc-800 transition-all duration-500 ${isSpinning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
-            {/* Image Container */}
-            <div className="relative aspect-square w-full rounded-[32px] overflow-hidden border border-zinc-800 bg-zinc-900 mb-8">
+        <div className={`w-full bg-[#111] rounded-3xl p-5 border border-zinc-800 transition-all duration-500 ${isSpinning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+            {/* Image - Larger */}
+            <div className="relative h-48 w-full rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 mb-4">
                 <img
                     src={mockData.imageUrl}
                     alt={mockData.name}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
 
             {/* Content */}
-            <div className="space-y-6">
-                <h2 className="text-3xl font-extrabold text-white tracking-tight">
-                    {mockData.name}
-                </h2>
-                <div className='text-white'>Price: ${mockData.price}</div>
-                {/* Tags Row */}
+            <div className="space-y-3">
+                <div className="flex justify-between items-start">
+                    <h2 className="text-xl font-bold text-white leading-tight">{mockData.name}</h2>
+                    <span className="text-xl text-orange-500 font-bold">RM {mockData.price}</span>
+                </div>
+
+                {/* Tags */}
                 <div className="flex flex-wrap gap-2">
-                    {Array.isArray(mockData.tags) && mockData.tags.map((tag, idx) => (
-                        <Tag key={idx} tag={tag} />
+                    {Array.isArray(mockData.tags) && mockData.tags.slice(0, 3).map((tag, idx) => (
+                        <span
+                            key={idx}
+                            className={`text-xs px-3 py-1 rounded-full ${typeof tag === 'object' ? tag.color : 'bg-white/10 text-gray-300'
+                                }`}
+                        >
+                            {typeof tag === 'object' ? tag.label : tag}
+                        </span>
                     ))}
                 </div>
 
-                 Action Buttons
-                <div className="space-y-3 pt-4">
-                    <Button
-                        label="Place Order"
-                        variant="primary"
-                        onClick={() => toast("Order placed!", { duration: 2000 })}
-                    />
-                    <Button
-                        label="Spin Again"
-                        variant="secondary"
+                {/* Buttons */}
+                <div className="flex gap-3 pt-2">
+                    <button
+                        onClick={handleGo}
+                        className="flex-1 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-xl text-base"
+                    >
+                        Go There!
+                    </button>
+                    <button
                         onClick={onSpin}
                         disabled={isSpinning}
-                    />
+                        className="flex-1 py-3 bg-white/10 text-white font-bold rounded-xl text-base border border-white/10"
+                    >
+                        {isSpinning ? '...' : 'Spin Again'}
+                    </button>
                 </div>
             </div>
         </div>

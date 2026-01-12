@@ -1,5 +1,4 @@
 import React from 'react';
-import toast from "react-hot-toast";
 import { useNavigate } from 'react-router-dom';
 
 const NAV_ITEMS = [
@@ -22,22 +21,22 @@ const NAV_ITEMS = [
         route: '/food-list'
     },
     {
-        label: 'Planner',
+        label: 'Surprise',
         icon: (
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-        ),
-        route: '/spending'
-    },
-    {
-        label: 'Surprise Me',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
             </svg>
         ),
         route: '/surpriseme'
+    },
+    {
+        label: 'Profile',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+        ),
+        route: '/profile'
     },
 ];
 
@@ -45,7 +44,6 @@ const BottomNavigationBar = () => {
     const navigate = useNavigate();
     const onClickNavItem = (item) => (e) => {
         e.preventDefault();
-        toast(`${item.label} clicked!`, { duration: 1000 });
         if (item.route) {
             navigate(item.route);
         }
