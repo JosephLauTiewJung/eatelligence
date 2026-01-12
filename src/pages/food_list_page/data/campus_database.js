@@ -27,7 +27,7 @@ export const CAMPUS_DATABASE = [
         distance: 300,
         openHours: { start: 6, end: 14 },
         popularity: 88,
-        imageUrl: 'https://images.unsplash.com/photo-1574484284008-59d7305452b7?q=80&w=800&auto=format&fit=crop',
+        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg/960px-Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg',
     },
     {
         id: 'spot_3',
@@ -72,7 +72,7 @@ export const CAMPUS_DATABASE = [
         distance: 500,
         openHours: { start: 6, end: 23 },
         popularity: 95,
-        imageUrl: 'https://images.unsplash.com/photo-1626132715006-253fb43ee055?q=80&w=800&auto=format&fit=crop',
+        imageUrl: 'https://delishglobe.com/wp-content/uploads/2025/04/Roti-Canai.png',
     },
     {
         id: 'spot_6',
