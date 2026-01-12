@@ -7,6 +7,7 @@ import RegistrationPage from "./pages/registration_page/RegistrationPage.jsx";
 import LoginPage from "./pages/login_page/LoginPage.jsx";
 import ProfilePage from "./pages/profile_page/ProfilePage.jsx";
 import NavigationPage from "./pages/navigation_page/NavigationPage.jsx";
+import HistoryPage from "./pages/history_page/HistoryPage.jsx";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path='/registration' element={<RegistrationPage />} />
                 <Route path='/profile' element={<ProfilePage />} />
                 <Route path='/navigate' element={<NavigationPage />} />
+                <Route path='/history' element={<HistoryPage />} />
             </Routes>
         </>
     )

@@ -1,7 +1,7 @@
 import BottomNavigationBar from "../../components/BottomNavigationBar.jsx";
-import Header from "../../components/Headers.jsx";
-import NutritionChart from '../../components/NutritionChart.jsx';
-import SpendingChart from '../../components/SpendingChart.jsx';
+import Header from "./components/Header.jsx";
+import NutritionChart from './components/NutritionChart.jsx';
+import SpendingChart from './components/SpendingChart.jsx';
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
@@ -71,8 +71,8 @@ const HomePage = () => {
                                 key={option.mood}
                                 onClick={() => handleMoodSelect(option)}
                                 className={`flex-1 py-3 rounded-2xl text-center transition-all flex flex-col items-center ${selectedMood?.mood === option.mood
-                                        ? 'bg-gradient-to-br from-orange-500 to-red-500 scale-105 shadow-lg'
-                                        : 'bg-[#1a1a1a] border border-white/5 hover:border-orange-500/30'
+                                    ? 'bg-gradient-to-br from-orange-500 to-red-500 scale-105 shadow-lg'
+                                    : 'bg-[#1a1a1a] border border-white/5 hover:border-orange-500/30'
                                     }`}
                             >
                                 <span className="text-2xl">{option.emoji}</span>
@@ -93,8 +93,8 @@ const HomePage = () => {
                         onClick={onSurprise}
                         disabled={!selectedMood}
                         className={`w-full py-4 font-bold text-lg rounded-2xl transition shadow-lg ${selectedMood
-                                ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:opacity-90'
-                                : 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:opacity-90'
+                            : 'bg-gray-800 text-gray-500 cursor-not-allowed'
                             }`}
                     >
                         🎁 Surprise Me

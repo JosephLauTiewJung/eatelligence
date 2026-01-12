@@ -25,7 +25,9 @@ const NavigationPage = () => {
             date: new Date().toISOString(),
             spotName: spot?.name || 'Unknown',
             price: spot?.price || 0,
-            location: spot?.location || ''
+            location: spot?.location || spot?.address || '',
+            calories: spot?.calories || 500,
+            imageUrl: spot?.imageUrl || ''
         });
         sessionStorage.setItem('spendingLog', JSON.stringify(history));
         toast.success('Meal logged!', { icon: '🍽️' });

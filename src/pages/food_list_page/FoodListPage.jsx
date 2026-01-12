@@ -184,9 +184,9 @@ const FoodListPage = () => {
                                     <span className="font-bold text-orange-400">RM {item.price.toFixed(2)}</span>
                                     <button
                                         onClick={() => handleVisit(item)}
-                                        className="bg-white text-black text-[10px] font-bold px-3 py-1.5 rounded-lg hover:bg-orange-500 hover:text-white transition"
+                                        className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-4 py-2 rounded-xl hover:opacity-90 transition shadow"
                                     >
-                                        Go
+                                        Go →
                                     </button>
                                 </div>
                             </div>
